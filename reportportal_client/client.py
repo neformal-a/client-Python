@@ -538,7 +538,7 @@ class RPClient(RP):
         """
         if not self.use_own_launch:
             return self.launch_uuid
-        url = uri_join(self.base_url_v2, 'launch')
+        url = uri_join(self.base_url_v1, 'launch')
         request_payload = LaunchStartRequest(
             name=name,
             start_time=start_time,
