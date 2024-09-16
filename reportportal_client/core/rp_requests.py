@@ -125,7 +125,7 @@ class HttpRequest:
         :return: wrapped HTTP response or None in case of failure
         """
         try:
-            print(f'url = ${self.url}, data = ${self.data}, json = ${self.json}')
+            print(f'url = ${self.url}, data = ${self.data}, json = ${self.json}, files = ${self.files}')
             response = RPResponse(self.session_method(self.url, data=self.data, json=self.json, files=self.files,
                                                       verify=self.verify_ssl, timeout=self.http_timeout))
             print('--------------/n')
