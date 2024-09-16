@@ -460,7 +460,7 @@ class RPClient(RP):
         :param truncate_attributes:    Truncate test item attributes to default maximum length.
         """
         set_current(self)
-        self.api_v1, self.api_v2 = 'v1', 'v2'
+        self.api_v1, self.api_v2 = 'v1', 'v1'
         self.__endpoint = endpoint
         self.__project = project
         self.base_url_v1 = uri_join(
@@ -538,7 +538,7 @@ class RPClient(RP):
         """
         if not self.use_own_launch:
             return self.launch_uuid
-        url = uri_join(self.base_url_v1, 'launch')
+        url = uri_join(self.base_url_v2, 'launch')
         request_payload = LaunchStartRequest(
             name=name,
             start_time=start_time,
