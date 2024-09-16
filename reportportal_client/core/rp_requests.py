@@ -125,8 +125,16 @@ class HttpRequest:
         :return: wrapped HTTP response or None in case of failure
         """
         try:
-            return RPResponse(self.session_method(self.url, data=self.data, json=self.json, files=self.files,
-                                                  verify=self.verify_ssl, timeout=self.http_timeout))
+            print(f'url = ${self.url}, data = ${self.data}, json = ${self.json}')
+            response = RPResponse(self.session_method(self.url, data=self.data, json=self.json, files=self.files,
+                                                      verify=self.verify_ssl, timeout=self.http_timeout))
+            print('--------------/n')
+            print(response.json)
+            print('--------------/n')
+            print(response.is_success)
+            print('--------------/n')
+            print(response.messages)
+            return response
         except (KeyError, IOError, ValueError, TypeError) as exc:
             logger.warning("ReportPortal %s request failed", self.name, exc_info=exc)
 
