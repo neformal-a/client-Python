@@ -734,7 +734,6 @@ class RPClient(RP):
     def _log(self, batch: Optional[List[RPRequestLog]]) -> Optional[Tuple[str, ...]]:
         if batch:
             url = uri_join(self.base_url_v2, 'log')
-            print('sending log request!')
             response = HttpRequest(self.session.post, url, files=RPLogBatch(batch).payload,
                                    verify_ssl=self.verify_ssl, http_timeout=self.http_timeout).make()
             if response:
@@ -762,7 +761,6 @@ class RPClient(RP):
             logger.warning("Attempt to log to non-existent item")
             return
         rp_file = RPFile(**attachment) if attachment else None
-        print('attaching file' + rp_file.name )
         rp_log = RPRequestLog(self.launch_uuid, time, rp_file, item_id, level, message)
         return self._log(self._log_batcher.append(rp_log))
 
