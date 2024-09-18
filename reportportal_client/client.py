@@ -460,7 +460,7 @@ class RPClient(RP):
         :param truncate_attributes:    Truncate test item attributes to default maximum length.
         """
         set_current(self)
-        self.api_v1, self.api_v2 = 'v1', 'v1'
+        self.api_v1, self.api_v2 = 'v1', 'v2'
         self.__endpoint = endpoint
         self.__project = project
         self.base_url_v1 = uri_join(
